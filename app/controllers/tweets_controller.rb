@@ -5,7 +5,7 @@ class TweetsController < ApplicationController
       redirect '/login'
     else
       @tweets = Tweet.all
-      erb :tweets
+      erb :'tweets/tweets'
     end
   end
 
@@ -19,6 +19,8 @@ class TweetsController < ApplicationController
 
   post '/tweets/new' do
     @tweet = Tweet.create(content: params[:content], user_id: session[:user_id])
+      @tweets = Tweet.all
+      erb :tweets
   end
 
 end
