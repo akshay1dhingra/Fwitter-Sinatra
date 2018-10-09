@@ -1,13 +1,8 @@
-tweets.erb:
+<h1>Tweet <%=@tweet.id<%></h1>
 
-<h1>Welcome, <%=current_user.username%></h1>
+<p><%=@tweet.content%></p>
 
-  <%@tweets.each do |tweet|%>
-    <%=tweet.content%>
-  <%end%>
-
-  <form method="post" action="/logout">
-    <button type="button" name="submit" id="submit" value="submit"></button>
-  </form>
-  
-    <a href="/logout">Logout</a>
+<form method="post" action="/tweets/<%=@tweet.id%>/delete">
+  <input id="hidden" type="hidden" name="_method" value="delete">
+  <input type="submit" value="Delete Tweet">
+</form>
